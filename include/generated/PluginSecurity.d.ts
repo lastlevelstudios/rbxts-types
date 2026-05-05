@@ -40,6 +40,7 @@ interface Services {
     ChangeHistoryStreamingService: ChangeHistoryStreamingService;
     Chat: Chat;
     CloudCRUDService: CloudCRUDService;
+    CloudExecutionService: CloudExecutionService;
     CollaboratorsService: CollaboratorsService;
     CollectionService: CollectionService;
     CommerceService: CommerceService;
@@ -104,6 +105,7 @@ interface Services {
     InstanceExtensionsService: InstanceExtensionsService;
     InstanceFileSyncService: InstanceFileSyncService;
     InternalMessagingService: InternalMessagingService;
+    InternalMessagingServiceVerifier: InternalMessagingServiceVerifier;
     InternalSyncService: InternalSyncService;
     IXPService: IXPService;
     JointsService: JointsService;
@@ -156,11 +158,14 @@ interface Services {
     PlayerHydrationService: PlayerHydrationService;
     Players: Players;
     PlayerViewService: PlayerViewService;
+    PluginConnectionService: PluginConnectionService;
     PluginDebugService: PluginDebugService;
     PluginGuiService: PluginGuiService;
     PluginManagementService: PluginManagementService;
     PluginPolicyService: PluginPolicyService;
     PolicyService: PolicyService;
+    Preloaded: Preloaded;
+    ProceduralBehaviorSchedulerService: ProceduralBehaviorSchedulerService;
     ProcessInstancePhysicsService: ProcessInstancePhysicsService;
     ProximityPromptService: ProximityPromptService;
     PublishService: PublishService;
@@ -182,6 +187,7 @@ interface Services {
     RunService: RunService;
     RuntimeContentService: RuntimeContentService;
     SafetyService: SafetyService;
+    SceneAnalysisService: SceneAnalysisService;
     ScriptChangeService: ScriptChangeService;
     ScriptCloneWatcher: ScriptCloneWatcher;
     ScriptCloneWatcherHelper: ScriptCloneWatcherHelper;
@@ -220,6 +226,7 @@ interface Services {
     StudioCaptureService: StudioCaptureService;
     StudioData: StudioData;
     StudioDeviceEmulatorService: StudioDeviceEmulatorService;
+    StudioDeviceSimulatorService: StudioDeviceSimulatorService;
     StudioPublishService: StudioPublishService;
     StudioScriptDebugEventListener: StudioScriptDebugEventListener;
     StudioSdkService: StudioSdkService;
@@ -402,6 +409,7 @@ interface CreatableInstances {
     Folder: Folder;
     ForceField: ForceField;
     Frame: Frame;
+    GeneratedFolder: GeneratedFolder;
     GetTextBoundsParams: GetTextBoundsParams;
     Glue: Glue;
     GroundController: GroundController;
@@ -468,9 +476,11 @@ interface CreatableInstances {
     PointLight: PointLight;
     Pose: Pose;
     PrismaticConstraint: PrismaticConstraint;
+    ProceduralModel: ProceduralModel;
     ProximityPrompt: ProximityPrompt;
     PyramidHandleAdornment: PyramidHandleAdornment;
     RayValue: RayValue;
+    RealtimeMedia: RealtimeMedia;
     RelativeGui: RelativeGui;
     RemoteEvent: RemoteEvent;
     RemoteFunction: RemoteFunction;
@@ -645,7 +655,6 @@ interface Instances extends Services, CreatableInstances {
     DebuggerWatch: DebuggerWatch;
     DockWidgetPluginGui: DockWidgetPluginGui;
     DynamicRotate: DynamicRotate;
-    EmotesPages: EmotesPages;
     ExplorerFilterAutocompleter: ExplorerFilterAutocompleter;
     FaceInstance: FaceInstance;
     FacialAnimationStreamingServiceStats: FacialAnimationStreamingServiceStats;
@@ -799,6 +808,7 @@ interface Objects extends Instances {
     MLSession: MLSession;
     Object: RBXObject;
     OutputLink: OutputLink;
+    PluginConnection: PluginConnection;
     ScreenshotCapture: ScreenshotCapture;
     TerrainIterateOperation: TerrainIterateOperation;
     TerrainModifyOperation: TerrainModifyOperation;
@@ -806,6 +816,7 @@ interface Objects extends Instances {
     TerrainWriteOperation: TerrainWriteOperation;
     VideoCapture: VideoCapture;
     VideoSampler: VideoSampler;
+    VirtualInput: VirtualInput;
     VoxelBuffer: VoxelBuffer;
     WebStreamClient: WebStreamClient;
 }
@@ -3424,6 +3435,21 @@ interface CloudCRUDService extends Instance {
     readonly _nominal_CloudCRUDService: unique symbol;
 }
 /**
+ * - **Tags**: NotCreatable, Service, NotReplicated
+ *
+ * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/CloudExecutionService)
+ */
+interface CloudExecutionService extends Instance {
+    /**
+     * **DO NOT USE!**
+     *
+     * This field exists to force TypeScript to recognize this as a nominal type
+     * @hidden
+     * @deprecated
+     */
+    readonly _nominal_CloudExecutionService: unique symbol;
+}
+/**
  * Renders realistic clouds that drift slowly across the sky.
  *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Clouds)
@@ -4485,8 +4511,6 @@ interface DataStoreSetOptions extends Instance {
 }
 /**
  * Allows scheduling the guaranteed destruction of an object without yielding.
- *
- *  .
  *
  * - **Tags**: NotCreatable, Service
  *
@@ -5886,6 +5910,21 @@ interface Folder extends Instance {
      * @deprecated
      */
     readonly _nominal_Folder: unique symbol;
+}
+/**
+ * A container that stores `ProceduralModel` generation results.
+ *
+ * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/GeneratedFolder)
+ */
+interface GeneratedFolder extends Folder {
+    /**
+     * **DO NOT USE!**
+     *
+     * This field exists to force TypeScript to recognize this as a nominal type
+     * @hidden
+     * @deprecated
+     */
+    readonly _nominal_GeneratedFolder: unique symbol;
 }
 /**
  * Protects a `Humanoid` from taking damage dealt through the `Humanoid:TakeDamage()` method and protects `BaseParts` from having their joints broken due to an `Explosion`.
@@ -7514,6 +7553,21 @@ interface InternalMessagingService extends Instance {
     readonly _nominal_InternalMessagingService: unique symbol;
 }
 /**
+ * - **Tags**: NotCreatable, Service, NotReplicated
+ *
+ * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/InternalMessagingServiceVerifier)
+ */
+interface InternalMessagingServiceVerifier extends Instance {
+    /**
+     * **DO NOT USE!**
+     *
+     * This field exists to force TypeScript to recognize this as a nominal type
+     * @hidden
+     * @deprecated
+     */
+    readonly _nominal_InternalMessagingServiceVerifier: unique symbol;
+}
+/**
  * - **Tags**: NotReplicated
  *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/InternalSyncItem)
@@ -8354,6 +8408,8 @@ interface MLService extends Instance {
     readonly _nominal_MLService: unique symbol;
 }
 /**
+ * Describes the appearance of a makeup item for the `HumanoidDescription`.
+ *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/MakeupDescription)
  */
 interface MakeupDescription extends Instance {
@@ -8981,6 +9037,48 @@ interface NetworkSettings extends Instance {
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/NetworkSettings#FreeMemoryMBytes)
      */
     readonly FreeMemoryMBytes: number;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     * - **Tags**: NotReplicated
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/NetworkSettings#InboundNetworkJitterMs)
+     */
+    InboundNetworkJitterMs: number;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     * - **Tags**: NotReplicated
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/NetworkSettings#InboundNetworkLossPercent)
+     */
+    InboundNetworkLossPercent: number;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     * - **Tags**: NotReplicated
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/NetworkSettings#InboundNetworkMinDelayMs)
+     */
+    InboundNetworkMinDelayMs: number;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     * - **Tags**: NotReplicated
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/NetworkSettings#OutboundNetworkJitterMs)
+     */
+    OutboundNetworkJitterMs: number;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     * - **Tags**: NotReplicated
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/NetworkSettings#OutboundNetworkLossPercent)
+     */
+    OutboundNetworkLossPercent: number;
+    /**
+     * - **ThreadSafety**: ReadSafe
+     * - **Tags**: NotReplicated
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/NetworkSettings#OutboundNetworkMinDelayMs)
+     */
+    OutboundNetworkMinDelayMs: number;
 }
 /**
  * An instance used to prevent collisions between two specific parts.
@@ -9532,6 +9630,21 @@ interface Tool extends BackpackItem {
     readonly _nominal_Tool: unique symbol;
 }
 /**
+ * Procedural models support edit-time procedural generation. Instead of manually constructing model content, a procedural model generates its contents automatically in response to parameter changes.
+ *
+ * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/ProceduralModel)
+ */
+interface ProceduralModel extends Model {
+    /**
+     * **DO NOT USE!**
+     *
+     * This field exists to force TypeScript to recognize this as a nominal type
+     * @hidden
+     * @deprecated
+     */
+    readonly _nominal_ProceduralModel: unique symbol;
+}
+/**
  * Base class for handling physics simulation and 3D spatial queries.
  *
  * - **Tags**: NotCreatable
@@ -9885,7 +9998,7 @@ interface DataStoreVersionPages extends Pages<DataStoreObjectVersionInfo> {
     readonly _nominal_DataStoreVersionPages: unique symbol;
 }
 /**
- * A special version of `Pages` that contains information about a player's connections.
+ * A special version of `Pages` that contains information about a player's friends.
  *
  * - **Tags**: NotCreatable, NotReplicated
  *
@@ -9921,21 +10034,6 @@ interface InventoryPages<T = unknown> extends Pages<T> {
      * @deprecated
      */
     readonly _nominal_InventoryPages: unique symbol;
-}
-/**
- * - **Tags**: NotCreatable, NotReplicated
- *
- * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/EmotesPages)
- */
-interface EmotesPages extends InventoryPages {
-    /**
-     * **DO NOT USE!**
-     *
-     * This field exists to force TypeScript to recognize this as a nominal type
-     * @hidden
-     * @deprecated
-     */
-    readonly _nominal_EmotesPages: unique symbol;
 }
 /**
  * A special type of `Pages` object whose pages contain key-value pairs from a `MemoryStoreHashMap`.
@@ -11141,6 +11239,52 @@ interface PluginCapabilities extends Instance {
     readonly _nominal_PluginCapabilities: unique symbol;
 }
 /**
+ * This service is used by plugins to communicate with other instances of themselves running in other data models.
+ *
+ * - **Tags**: NotCreatable, Service, NotReplicated
+ *
+ * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/PluginConnectionService)
+ */
+interface PluginConnectionService extends Instance {
+    /**
+     * **DO NOT USE!**
+     *
+     * This field exists to force TypeScript to recognize this as a nominal type
+     * @hidden
+     * @deprecated
+     */
+    readonly _nominal_PluginConnectionService: unique symbol;
+    /**
+     * Checks if the current data model context can ever have connections of a given type.
+     *
+     * - **ThreadSafety**: Unsafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/PluginConnectionService#CanHaveConnectionType)
+     * @param this This service is used by plugins to communicate with other instances of themselves running in other data models.
+     * @param type The connection type to check.
+     */
+    CanHaveConnectionType(this: PluginConnectionService, type: CastsToEnum<Enum.PluginConnectionTargetType>): boolean;
+    /**
+     * Returns a list of currently connected `PluginConnection` objects with the given connection type.
+     *
+     * - **ThreadSafety**: Unsafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/PluginConnectionService#GetPluginConnectionsOfType)
+     * @param this This service is used by plugins to communicate with other instances of themselves running in other data models.
+     * @param type The connection type to check.
+     * @returns An array of the currently connected `PluginConnection` objects with that target type.
+     */
+    GetPluginConnectionsOfType(this: PluginConnectionService, type: CastsToEnum<Enum.PluginConnectionTargetType>): Array<unknown>;
+    /**
+     * Fires just after a new `PluginConnection` successfully connects.
+     *
+     * - **ThreadSafety**: Unsafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/PluginConnectionService#Connected)
+     */
+    readonly Connected: RBXScriptSignal<(conn: PluginConnection) => void>;
+}
+/**
  * - **Tags**: NotCreatable, Service, NotReplicated
  *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/PluginDebugService)
@@ -11575,6 +11719,36 @@ interface SunRaysEffect extends PostEffect {
 /**
  * - **Tags**: NotCreatable, Service
  *
+ * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/Preloaded)
+ */
+interface Preloaded extends Instance {
+    /**
+     * **DO NOT USE!**
+     *
+     * This field exists to force TypeScript to recognize this as a nominal type
+     * @hidden
+     * @deprecated
+     */
+    readonly _nominal_Preloaded: unique symbol;
+}
+/**
+ * - **Tags**: NotCreatable, Service, NotReplicated
+ *
+ * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/ProceduralBehaviorSchedulerService)
+ */
+interface ProceduralBehaviorSchedulerService extends Instance {
+    /**
+     * **DO NOT USE!**
+     *
+     * This field exists to force TypeScript to recognize this as a nominal type
+     * @hidden
+     * @deprecated
+     */
+    readonly _nominal_ProceduralBehaviorSchedulerService: unique symbol;
+}
+/**
+ * - **Tags**: NotCreatable, Service
+ *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/ProcessInstancePhysicsService)
  */
 interface ProcessInstancePhysicsService extends Instance {
@@ -11648,6 +11822,19 @@ interface RTAnimationTracker extends Instance {
      * @deprecated
      */
     readonly _nominal_RTAnimationTracker: unique symbol;
+}
+/**
+ * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/RealtimeMedia)
+ */
+interface RealtimeMedia extends Instance {
+    /**
+     * **DO NOT USE!**
+     *
+     * This field exists to force TypeScript to recognize this as a nominal type
+     * @hidden
+     * @deprecated
+     */
+    readonly _nominal_RealtimeMedia: unique symbol;
 }
 /**
  * A service that provides an interface for you to manage and display personalized content recommendations.
@@ -12059,6 +12246,21 @@ interface SafetyService extends Instance {
      * @deprecated
      */
     readonly _nominal_SafetyService: unique symbol;
+}
+/**
+ * - **Tags**: NotCreatable, Service, NotReplicated
+ *
+ * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/SceneAnalysisService)
+ */
+interface SceneAnalysisService extends Instance {
+    /**
+     * **DO NOT USE!**
+     *
+     * This field exists to force TypeScript to recognize this as a nominal type
+     * @hidden
+     * @deprecated
+     */
+    readonly _nominal_SceneAnalysisService: unique symbol;
 }
 /**
  * A 2D user interface that allows users to capture and save screenshots to their local device.
@@ -13910,6 +14112,139 @@ interface StudioDeviceEmulatorService extends Instance {
     readonly _nominal_StudioDeviceEmulatorService: unique symbol;
 }
 /**
+ * - **Tags**: NotCreatable, Service, NotReplicated
+ *
+ * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/StudioDeviceSimulatorService)
+ */
+interface StudioDeviceSimulatorService extends Instance {
+    /**
+     * **DO NOT USE!**
+     *
+     * This field exists to force TypeScript to recognize this as a nominal type
+     * @hidden
+     * @deprecated
+     */
+    readonly _nominal_StudioDeviceSimulatorService: unique symbol;
+    /**
+     * - **ThreadSafety**: Unsafe
+     * - **Tags**: Yields
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/StudioDeviceSimulatorService#CreateDeviceAsync)
+     */
+    CreateDeviceAsync(this: StudioDeviceSimulatorService, config: object): string;
+    /**
+     * - **ThreadSafety**: Unsafe
+     * - **Tags**: Yields
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/StudioDeviceSimulatorService#GetDeviceAsync)
+     */
+    GetDeviceAsync(this: StudioDeviceSimulatorService): string;
+    /**
+     * - **ThreadSafety**: Unsafe
+     * - **Tags**: Yields
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/StudioDeviceSimulatorService#GetDeviceInfoAsync)
+     */
+    GetDeviceInfoAsync(this: StudioDeviceSimulatorService, deviceId: string): object;
+    /**
+     * - **ThreadSafety**: Unsafe
+     * - **Tags**: Yields
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/StudioDeviceSimulatorService#GetDeviceListAsync)
+     */
+    GetDeviceListAsync(this: StudioDeviceSimulatorService): Array<unknown>;
+    /**
+     * - **ThreadSafety**: Unsafe
+     * - **Tags**: Yields
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/StudioDeviceSimulatorService#GetOrientationAsync)
+     */
+    GetOrientationAsync(this: StudioDeviceSimulatorService): Enum.ScreenOrientation;
+    /**
+     * - **ThreadSafety**: Unsafe
+     * - **Tags**: Yields
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/StudioDeviceSimulatorService#GetPixelDensityAsync)
+     */
+    GetPixelDensityAsync(this: StudioDeviceSimulatorService): number;
+    /**
+     * - **ThreadSafety**: Unsafe
+     * - **Tags**: Yields
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/StudioDeviceSimulatorService#GetResolutionAsync)
+     */
+    GetResolutionAsync(this: StudioDeviceSimulatorService): Vector2;
+    /**
+     * - **ThreadSafety**: Unsafe
+     * - **Tags**: Yields
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/StudioDeviceSimulatorService#GetScalingModeAsync)
+     */
+    GetScalingModeAsync(this: StudioDeviceSimulatorService): Enum.DeviceSimulatorScalingMode;
+    /**
+     * - **ThreadSafety**: Unsafe
+     * - **Tags**: Yields
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/StudioDeviceSimulatorService#RemoveDeviceAsync)
+     */
+    RemoveDeviceAsync(this: StudioDeviceSimulatorService, deviceId: string): void;
+    /**
+     * - **ThreadSafety**: Unsafe
+     * - **Tags**: Yields
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/StudioDeviceSimulatorService#SetDeviceAsync)
+     */
+    SetDeviceAsync(this: StudioDeviceSimulatorService, deviceId: string): void;
+    /**
+     * - **ThreadSafety**: Unsafe
+     * - **Tags**: Yields
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/StudioDeviceSimulatorService#SetOrientationAsync)
+     */
+    SetOrientationAsync(this: StudioDeviceSimulatorService, orientation: CastsToEnum<Enum.ScreenOrientation>): void;
+    /**
+     * - **ThreadSafety**: Unsafe
+     * - **Tags**: Yields
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/StudioDeviceSimulatorService#SetPixelDensityAsync)
+     */
+    SetPixelDensityAsync(this: StudioDeviceSimulatorService, density: number): void;
+    /**
+     * - **ThreadSafety**: Unsafe
+     * - **Tags**: Yields
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/StudioDeviceSimulatorService#SetResolutionAsync)
+     */
+    SetResolutionAsync(this: StudioDeviceSimulatorService, width: number, height: number): void;
+    /**
+     * - **ThreadSafety**: Unsafe
+     * - **Tags**: Yields
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/StudioDeviceSimulatorService#SetScalingModeAsync)
+     */
+    SetScalingModeAsync(this: StudioDeviceSimulatorService, mode: CastsToEnum<Enum.DeviceSimulatorScalingMode>): void;
+    /**
+     * - **ThreadSafety**: Unsafe
+     * - **Tags**: Yields
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/StudioDeviceSimulatorService#StopSimulationAsync)
+     */
+    StopSimulationAsync(this: StudioDeviceSimulatorService): void;
+    /**
+     * - **ThreadSafety**: Unsafe
+     * - **Tags**: Yields
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/StudioDeviceSimulatorService#UpdateDeviceAsync)
+     */
+    UpdateDeviceAsync(this: StudioDeviceSimulatorService, deviceId: string, config: object): void;
+    /**
+     * - **ThreadSafety**: Unsafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/StudioDeviceSimulatorService#ConfigurationChanged)
+     */
+    readonly ConfigurationChanged: RBXScriptSignal<() => void>;
+}
+/**
  * - **Tags**: NotCreatable, NotReplicated
  *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/StudioObjectBase)
@@ -14184,6 +14519,13 @@ interface StudioTestService extends Instance {
      * - **ThreadSafety**: Unsafe
      * - **Tags**: Yields
      *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/StudioTestService#ExecuteMultiplayerTestAsync)
+     */
+    ExecuteMultiplayerTestAsync(this: StudioTestService, numPlayers: number, args: unknown): unknown;
+    /**
+     * - **ThreadSafety**: Unsafe
+     * - **Tags**: Yields
+     *
      * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/StudioTestService#ExecutePlayModeAsync)
      * @param this Service allowing plugins to automate and customize Test and Run mode testing.
      * @param args Argument passed to the test session, or `nil`.
@@ -14336,6 +14678,8 @@ interface StyleLink extends Instance {
     readonly _nominal_StyleLink: unique symbol;
 }
 /**
+ * Instance used to set conditions such as `"MaxSize"` and `"PreferredInput"` for a `StyleRule`.
+ *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/StyleQuery)
  */
 interface StyleQuery extends Instance {
@@ -15770,6 +16114,16 @@ interface UserInputService extends Instance {
      * @deprecated
      */
     readonly _nominal_UserInputService: unique symbol;
+    /**
+     * Creates a `VirtualInput` object that a Studio plugin can use to simulate mouse, keyboard, and pointer input.
+     *
+     * - **ThreadSafety**: Unsafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/UserInputService#CreateVirtualInput)
+     * @param this `UserInputService` is primarily used to detect the input types available on a user's device, as well as detect input events.
+     * @returns A new `VirtualInput` object, or `nil` if the feature is not available.
+     */
+    CreateVirtualInput(this: UserInputService): RBXObject;
 }
 /**
  * A service that handles queries regarding users on the Roblox platform.
@@ -16401,6 +16755,71 @@ interface OutputLink extends RBXObject {
     readonly _nominal_OutputLink: unique symbol;
 }
 /**
+ * Encapsulates a connection between the current data model and another for plugin communication.
+ *
+ * - **Tags**: NotCreatable, NotReplicated
+ *
+ * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/PluginConnection)
+ */
+interface PluginConnection extends RBXObject {
+    /**
+     * **DO NOT USE!**
+     *
+     * This field exists to force TypeScript to recognize this as a nominal type
+     * @hidden
+     * @deprecated
+     */
+    readonly _nominal_PluginConnection: unique symbol;
+    /**
+     * Whether this `PluginConnection` object is still connected.
+     *
+     * - **ThreadSafety**: ReadSafe
+     * - **Tags**: NotReplicated
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/PluginConnection#Connected)
+     */
+    readonly Connected: boolean;
+    /**
+     * A unique ID for the target data model.
+     *
+     * - **ThreadSafety**: ReadSafe
+     * - **Tags**: NotReplicated
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/PluginConnection#TargetId)
+     */
+    readonly TargetId: string;
+    /**
+     * This `PluginConnectionTargetType` describes the relationship of the target data model to the current one.
+     *
+     * - **ThreadSafety**: ReadSafe
+     * - **Tags**: NotReplicated
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/PluginConnection#Type)
+     */
+    readonly Type: Enum.PluginConnectionTargetType;
+    /**
+     * Binds a callback to this `PluginConnection` to receive messages from `SendMessage()`.
+     *
+     * - **ThreadSafety**: Unsafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/PluginConnection#BindToMessage)
+     * @param this Encapsulates a connection between the current data model and another for plugin communication.
+     * @param callback A function accepting a string or a buffer which will be called when this `PluginConnection` receives a message.
+     * @returns A `RBXScriptConnection` representing the binding of this callback to the `PluginConnection`. Disconnect it to disconnect this callback from the connection.
+     */
+    BindToMessage(this: PluginConnection, callbackFunction: Callback): RBXScriptConnection;
+    /**
+     * Sends a payload to the remote data model.
+     *
+     * - **ThreadSafety**: Unsafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/PluginConnection#SendMessage)
+     * @param this Encapsulates a connection between the current data model and another for plugin communication.
+     * @param message The string or buffer to be sent.
+     */
+    SendMessage(this: PluginConnection, message: unknown): void;
+}
+/**
  * - **Tags**: NotCreatable, NotReplicated
  *
  * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/TerrainIterateOperation)
@@ -16476,6 +16895,89 @@ interface VideoSampler extends RBXObject {
      * @deprecated
      */
     readonly _nominal_VideoSampler: unique symbol;
+}
+/**
+ * Allows Studio plugins to simulate mouse, keyboard, and pointer input as if it were performed by a real player.
+ *
+ * - **Tags**: NotCreatable, NotReplicated
+ *
+ * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/VirtualInput)
+ */
+interface VirtualInput extends RBXObject {
+    /**
+     * **DO NOT USE!**
+     *
+     * This field exists to force TypeScript to recognize this as a nominal type
+     * @hidden
+     * @deprecated
+     */
+    readonly _nominal_VirtualInput: unique symbol;
+    /**
+     * Injects a keyboard key press or release event.
+     *
+     * - **ThreadSafety**: Unsafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/VirtualInput#SendKey)
+     * @param this Allows Studio plugins to simulate mouse, keyboard, and pointer input as if it were performed by a real player.
+     * @param isPressed Whether to simulate a key press (`true`) or a key release (`false`).
+     * @param keyCode The `KeyCode` of the key to inject.
+     * @param isRepeatedKey Whether this is an auto-repeat event, as occurs when a key is held down. Only valid for text-manipulation keys such as `KeyCode.Backspace`, `KeyCode.Delete`, and the arrow keys. Defaults to `false`.
+     */
+    SendKey(this: VirtualInput, isPressed: boolean, keyCode: CastsToEnum<Enum.KeyCode>, isRepeatedKey?: boolean): void;
+    /**
+     * Injects a mouse button press or release event at the specified screen position.
+     *
+     * - **ThreadSafety**: Unsafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/VirtualInput#SendMouseButton)
+     * @param this Allows Studio plugins to simulate mouse, keyboard, and pointer input as if it were performed by a real player.
+     * @param position The screen-space position in pixels at which to inject the event.
+     * @param button The mouse button to use. Supported values are `UserInputType.MouseButton1`, `UserInputType.MouseButton2`, and `UserInputType.MouseButton3`.
+     * @param isDown Whether to simulate a button press (`true`) or a button release (`false`).
+     * @param repeatCount The consecutive-click count for multi-click detection, such as a double- or triple-click. Defaults to `0`.
+     */
+    SendMouseButton(this: VirtualInput, position: Vector2, button: CastsToEnum<Enum.UserInputType>, isDown: boolean, repeatCount?: number): void;
+    /**
+     * Injects a relative mouse movement event. Only works while the player's cursor is locked.
+     *
+     * - **ThreadSafety**: Unsafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/VirtualInput#SendMouseDelta)
+     * @param this Allows Studio plugins to simulate mouse, keyboard, and pointer input as if it were performed by a real player.
+     * @param positionDelta The relative mouse movement in pixels along each axis.
+     */
+    SendMouseDelta(this: VirtualInput, positionDelta: Vector2): void;
+    /**
+     * Moves the virtual mouse cursor to the specified absolute screen position.
+     *
+     * - **ThreadSafety**: Unsafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/VirtualInput#SendMousePosition)
+     * @param this Allows Studio plugins to simulate mouse, keyboard, and pointer input as if it were performed by a real player.
+     * @param position The target screen-space position in pixels.
+     */
+    SendMousePosition(this: VirtualInput, position: Vector2): void;
+    /**
+     * Injects a scroll wheel, trackpad pan, or pinch gesture event at the specified screen position.
+     *
+     * - **ThreadSafety**: Unsafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/VirtualInput#SendPointerAction)
+     * @param this Allows Studio plugins to simulate mouse, keyboard, and pointer input as if it were performed by a real player.
+     * @param position The screen-space position in pixels at which to inject the event.
+     * @param pointerAction A dictionary describing the pointer action to inject. Accepted keys are `Wheel` (number), `Pan` (`Vector2`), and `Pinch` (number). At least one key must have a non-zero value.
+     */
+    SendPointerAction(this: VirtualInput, position: Vector2, pointerAction: object): void;
+    /**
+     * Injects a text input event as if the specified string was typed on a keyboard.
+     *
+     * - **ThreadSafety**: Unsafe
+     *
+     * [Creator Hub](https://create.roblox.com/docs/reference/engine/classes/VirtualInput#SendTextInput)
+     * @param this Allows Studio plugins to simulate mouse, keyboard, and pointer input as if it were performed by a real player.
+     * @param text The string to inject as text input.
+     */
+    SendTextInput(this: VirtualInput, text: string): void;
 }
 /**
  * - **Tags**: NotCreatable, NotReplicated
