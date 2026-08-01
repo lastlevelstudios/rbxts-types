@@ -568,7 +568,6 @@ interface Instance extends RBXObject {
 	 */
 	Clone<T extends Instance>(this: T): T;
 	GetActor(this: Instance): Actor | undefined;
-	GetDescendants(this: Instance): Array<Instance>;
 	GetTags(this: Instance): Array<string>;
 	FindFirstChild(this: Instance, childName: string | number, recursive?: boolean): Instance | undefined;
 	WaitForChild(this: Instance, childName: string | number): Instance;
@@ -584,6 +583,10 @@ interface Instance extends RBXObject {
 	GetAttribute(this: Instance, attribute: string): AttributeValue | undefined;
 	SetAttribute(this: Instance, attribute: string, value: AttributeValue | undefined): void;
 	GetAttributes(this: Instance): Map<string, AttributeValue>;
+	QueryDescendants<S extends string>(
+		this: Instance,
+		selector: Selector.ValidateSelector<S> extends S ? S : Selector.ValidateSelector<S>,
+	): string extends S ? Array<Instance> : Array<Selector.Solve<S>>;
 	readonly AncestryChanged: RBXScriptSignal<(child: Instance, parent: Instance | undefined) => void>;
 }
 
@@ -1320,17 +1323,11 @@ interface WorldRoot extends Model {
 	GetPartsInPart(this: WorldRoot, part: BasePart, overlapParams?: OverlapParams): Array<BasePart>;
 }
 
-interface Platform extends Part {
-	readonly RemoteCreateMotor6D: RBXScriptSignal<(humanoid: Humanoid) => void>;
-}
-
 interface SkateboardPlatform extends Part {
 	readonly Equipped: RBXScriptSignal<(humanoid: Humanoid, skateboardController: SkateboardController) => void>;
-	readonly RemoteCreateMotor6D: RBXScriptSignal<(humanoid: Humanoid) => void>;
 	readonly Unequipped: RBXScriptSignal<(humanoid: Humanoid) => void>;
 }
 
 interface Seat extends Part {
 	Sit(this: Seat, humanoid: Humanoid | undefined): void;
-	readonly RemoteCreateSeatWeld: RBXScriptSignal<(humanoid: Humanoid) => void>;
 }
